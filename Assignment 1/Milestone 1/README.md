@@ -66,6 +66,7 @@ The following is a video walkthrough of the resources we created and the
 packages we installed to complete this milestone:
 
 _Insert link to video here_
+[Quinn's Video](https://vanderbilt365-my.sharepoint.com/:v:/g/personal/quinn_r_pommerening_vanderbilt_edu/EQwPGoI-Y0NAqPcXQYu9-v0B-XFgoQSNb8nmyaW2zttTWw?e=kmV5jg)
 
 ## Part 4: Proposed Data Source and Topics
 
