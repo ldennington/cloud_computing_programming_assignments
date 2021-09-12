@@ -62,9 +62,9 @@ installed with `pip3` (which was installed in the final step of
 
 ## Part 3: Video demo
 
-The following is a video walkthrough of the resources we created and the
+The following are video walkthroughs of the resources we created and the
 packages we installed to complete this milestone:
 
-_Insert link to video here_
+[Lessley's video](https://vanderbilt365-my.sharepoint.com/:v:/g/personal/lessley_c_dennington_vanderbilt_edu/EXneOe7OnKpJti9PhzZqVYoBPhEfaIuUa8Zac1Id_6Gp9w?e=FJBRWY)
 
 ## Part 4: Proposed Data Source and Topics
