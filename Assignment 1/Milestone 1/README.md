@@ -10,7 +10,7 @@ __Quinn Pommerening__
 * Met with Lessley on Sept. 11 to discuss assignment
 * Contributed the following `README.md` content for Milestone 1:
     * [Part 4: Proposed Data Source and Topics](#part-4-proposed-data-source-and-topics)
-* Met with Lessley on Sept. 12 to create 
+* Met with Lessley on Sept. 12 to create
 video demo](#part-4-proposed-data-source-and-topics)
 
 __Lessley Dennington__
@@ -68,3 +68,7 @@ packages we installed to complete this milestone:
 _Insert link to video here_
 
 ## Part 4: Proposed Data Source and Topics
+
+We will be utilizing [Meetup API](https://www.meetup.com/meetup_api/) as our source for the data stream.
+This data source will allow for us to be able to create multiple topics.
+The topics we plan to subscribe to will be RSPVs for events located in Seattle, WA and Nashville, TN.
