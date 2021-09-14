@@ -78,7 +78,6 @@ packages we installed to complete this milestone:
 ## Installations
 [Guide to install Kafka and Zookeeper](https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-ubuntu-20-04)
 - Install Kafka for Python with pip ```pip install kafka-python```
-- Install Websockets for Python: ```pip install websockets```
 
 ## Starting/Stopping Kafka and Zookeeper
 
@@ -96,7 +95,11 @@ packages we installed to complete this milestone:
 NOTE: These steps must be done while on Kafka user from Installation Guide
 
 ### Creating Topic with Zookeeper
-- ```~/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic Topic Name Here```
+```
+~/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic Topic Name Here
+```
 
 ### Watch the Topic with Consumer
-- ```~/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic Topic Name Here --from-beginning```
+```
+~/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic Topic Name Here --from-beginning
+```
