@@ -71,9 +71,7 @@ packages we installed to complete this milestone:
 
 ## Part 4: Proposed Data Source and Topics
 
-- We will be utilizing [Meetup API](https://www.meetup.com/meetup_api/) as our source for the data stream.
-- This data source will allow for us to be able to create multiple topics.
-- The topics we plan to subscribe to will be RSPVs for events located in Seattle, WA and Nashville, TN.
+We will use the [Meetup API](https://www.meetup.com/meetup_api/) as our data stream source, which will allow us each to create different topics from our virtual machines. The topics we plan to send to Kafka will be RSVPs for events located in Seattle, WA and Nashville, TN.
 
 ## Installations
 [Guide to install Kafka and Zookeeper](https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-ubuntu-20-04)
