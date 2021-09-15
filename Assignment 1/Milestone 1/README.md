@@ -67,7 +67,7 @@ packages we installed to complete this milestone:
 
 [Lessley's video](https://vanderbilt365-my.sharepoint.com/:v:/g/personal/lessley_c_dennington_vanderbilt_edu/EXneOe7OnKpJti9PhzZqVYoBPhEfaIuUa8Zac1Id_6Gp9w?e=FJBRWY)
 
-[Quinn's Video](https://vanderbilt365-my.sharepoint.com/:v:/g/personal/quinn_r_pommerening_vanderbilt_edu/EQwPGoI-Y0NAqPcXQYu9-v0B-XFgoQSNb8nmyaW2zttTWw?e=kmV5jg)
+[Quinn's Video](https://vanderbilt365-my.sharepoint.com/:v:/g/personal/quinn_r_pommerening_vanderbilt_edu/EdnbybyQTaZAh4EThKnkwUUBEQjUdtwNTu19fiZxVf8s8g?e=lqMUdM)
 
 ## Part 4: Proposed Data Source and Topics
 

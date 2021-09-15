@@ -30,9 +30,13 @@ def get_stream(url):
     with s.get(url, headers=None, stream=True) as resp:
         for data in resp.iter_lines():
             if data:
-                print(json.loads(data))
-                producer.send ("MeetUp", value=json.loads(data))
-                producer.flush()
+                city = json.loads(data)
+                print(city['group']['group_city'])
+                #if city['group']['group_city'] == 'Seattle':
+                if city['group']['group_city'] == 'Nashville':
+                    print(city)
+                    producer.send ("MeetUp", value=city)
+                    producer.flush()
 
 
 for i in range (100):
