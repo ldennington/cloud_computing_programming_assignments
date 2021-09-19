@@ -20,7 +20,7 @@ import requests
 import json
 from kafka import KafkaProducer  # producer of events
 
-producer = KafkaProducer (bootstrap_servers=['129.114.25.169:9092'],
+producer = KafkaProducer (bootstrap_servers=['129.114.27.100:9092'],
                          value_serializer=lambda x:
                          json.dumps(x).encode('utf-8'))
 
