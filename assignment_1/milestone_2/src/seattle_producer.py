@@ -14,11 +14,11 @@
 #    command line consumer (or consumers)
 #
 
-import os   # need this for popen
-import time # for
+import os
+import time
 import requests
 import json
-from kafka import KafkaProducer  # producer of events
+from kafka import KafkaProducer
 
 producer = KafkaProducer (bootstrap_servers=['129.114.27.100:9092'],
                          value_serializer=lambda x:
