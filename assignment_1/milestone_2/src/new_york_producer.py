@@ -20,9 +20,9 @@ import requests
 import json
 from kafka import KafkaProducer
 
-# AWS instance public IP: 54.227.91.1
-# Chameleon instance public IP: 129.114.27.100
-producer = KafkaProducer (bootstrap_servers=['129.114.27.100:9092'],
+# Chameleon IP: 129.114.25.169
+# AWS IP: 54.196.220.28
+producer = KafkaProducer (bootstrap_servers=[' 54.196.220.28:9092'],
                          value_serializer=lambda x:
                          json.dumps(x).encode('utf-8'))
 
@@ -33,10 +33,9 @@ def get_stream(url):
         for data in resp.iter_lines():
             if data:
                 city = json.loads(data)
-                print(city['group']['group_city'])
-                if city['group']['group_city'] == 'Seattle':
+                if city['group']['group_city'] == 'New York':
                     print(city)
-                    producer.send ("MeetUpSeattle", value=city)
+                    producer.send ("MeetUpNewYork", value=city)
                     producer.flush()
 
 
