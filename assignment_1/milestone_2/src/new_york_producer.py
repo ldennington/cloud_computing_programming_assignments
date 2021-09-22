@@ -31,10 +31,9 @@ def get_stream(url):
         for data in resp.iter_lines():
             if data:
                 city = json.loads(data)
-                print(city['group']['group_city'])
-                if city['group']['group_city'] == 'Seattle':
+                if city['group']['group_city'] == 'New York':
                     print(city)
-                    producer.send ("MeetUpSeattle", value=city)
+                    producer.send ("MeetUpNewYork", value=city)
                     producer.flush()
 
 
