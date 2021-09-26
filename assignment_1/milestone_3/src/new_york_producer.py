@@ -20,8 +20,8 @@ import requests
 import json
 from kafka import KafkaProducer
 
-# Chameleon IP: 129.114.25.169
-# AWS IP: 54.196.220.28
+# AWS instance public IP: 54.227.61.11
+# Chameleon instance public IP: 129.114.27.100
 producer = KafkaProducer (bootstrap_servers=[' 54.196.220.28:9092'],
                          value_serializer=lambda x:
                          json.dumps(x).encode('utf-8'))
