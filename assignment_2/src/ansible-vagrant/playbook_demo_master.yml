@@ -23,7 +23,7 @@
                              # appropriate user name
 
   gather_facts: yes          # We ask Ansible to collect all facts
-  become_user: no            # No need for sudo as we are not installing anything
+  become_user: root            # Need sudo as we will soon be installing things
 
   tasks:    # the task to be performed (here I am showing the effect of include_)
   - include_tasks: tasks/playbook_get_facts_local_vm.yml

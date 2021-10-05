@@ -5,3 +5,5 @@ mkdir -p ~/.ssh
 mkdir -p ~/.ansible
 mkdir -p ~/.config
 mkdir -p ~/.config/openstack
+mkdir -p ~/kafka
+mkdir -p ~/ansible-vagrant/tasks
