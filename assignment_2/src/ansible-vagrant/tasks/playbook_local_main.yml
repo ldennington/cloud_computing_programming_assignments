@@ -1,0 +1,11 @@
+---
+#####################################################
+### Play 1: Run general VM operations for local VMs
+#####################################################
+- name: "Play 1: Run general operations on local VMs"
+  hosts: MyLocalVMs
+  gather_facts: yes
+
+  tasks:
+  - include_tasks: ./playbook_get_facts_local_vm.yml
+...

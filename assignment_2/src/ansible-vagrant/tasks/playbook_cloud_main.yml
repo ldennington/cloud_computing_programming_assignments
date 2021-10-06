@@ -1,0 +1,14 @@
+---
+#####################################################
+### Play 1: Run general VM operations for Cloud VMs
+#####################################################
+- name: "Play 1: Run general operations on Cloud VMs"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  gather_facts: yes
+  become_user: root
+
+  tasks:    # the task to be performed (here I am showing the effect of include_)
+  - include_tasks: ./playbook_get_facts_cloud_vm.yml
+...
+

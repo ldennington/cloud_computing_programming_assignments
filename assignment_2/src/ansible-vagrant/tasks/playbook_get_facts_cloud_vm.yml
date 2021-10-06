@@ -1,28 +1,13 @@
 ---
-#
-# EECS 4287/5287: Principles of Cloud Computing
-# Author: Aniruddha Gokhale
-# Created: Fall 2020
-#
-  - name: Install pip
-    apt:
-      pkg:
-      - python3-pip
-    become: true
-    become_user: root
-  
-  - name: Install openstack sdk
-    pip:
-      name: python-openstackclient
-
   - name: Obtain info about specific servers on the Chameleon
+    hosts: MyChameleonVMs
     openstack.cloud.server_info:
-        cloud: chameleon   # this is the nickname from our clouds.yaml file
-        server: gokhale*     # set this whatever you are interested in
-    register: result            # this is a way to store output in a variable
+        cloud: CH-822922   # this is the nickname from our clouds.yaml file
+        server: gokhale*
+    register: result
 
   - name: "Print results"
-    debug:  # Notice how variables are accessed (shown below)
+    debug:
         msg: "{{ result.openstack_servers }}"
 ... 
 
