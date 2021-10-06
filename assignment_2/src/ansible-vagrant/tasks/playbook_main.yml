@@ -10,5 +10,15 @@
 
   tasks:    # the task to be performed (here I am showing the effect of include_)
   - include_tasks: ./playbook_get_facts_cloud_vm.yml
+
+#####################################################
+### Play 2: Run general VM operations for local VMs
+#####################################################
+- name: "Play 2: Run general operations on local VMs"
+  hosts: MyLocalVMs
+  gather_facts: yes
+
+  tasks:
+  - include_tasks: ./playbook_get_facts_local_vm.yml
 ...
 
