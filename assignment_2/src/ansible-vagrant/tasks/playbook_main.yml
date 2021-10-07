@@ -9,7 +9,8 @@
   become_user: root
 
   tasks:    # the task to be performed (here I am showing the effect of include_)
-  - include_tasks: ./playbook_get_facts_cloud_vm.yml
+   - include_tasks: ./playbook_install_packages.yml
+   - include_tasks: ./playbook_get_facts_cloud_vm.yml
 
 #####################################################
 ### Play 2: Run general VM operations for local VMs
@@ -21,4 +22,3 @@
   tasks:
   - include_tasks: ./playbook_get_facts_local_vm.yml
 ...
-
