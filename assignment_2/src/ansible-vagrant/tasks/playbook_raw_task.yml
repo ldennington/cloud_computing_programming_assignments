@@ -1,14 +1,10 @@
 ---
-- hosts: MyChameleonVMs
-  remote_user:  cc
-  become: yes
+- become: yes
   gather_facts: no
   collections:
     - openstack.cloud
-  pre_tasks:       # Task is something a playbook is supposed
-                            # to execute. Tasks contain actions which
-                            # are modules and their arguments
-    - name: 'install python3'
-      raw: apt-get install -y python3
+  pre_tasks:
+    - name: 'install pip'
+      raw: apt-get install -y python3-pip
 ...
 

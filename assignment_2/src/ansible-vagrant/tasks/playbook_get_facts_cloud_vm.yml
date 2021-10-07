@@ -1,12 +1,11 @@
 ---
   - name: Obtain info about specific servers on the Chameleon
     openstack.cloud.server_info:
-        cloud: openstack   # this is the nickname from our clouds.yaml file
-        server: denninlc*
+        cloud: openstack
+        server: team4-*
     register: result
 
   - name: "Print results"
     debug:
         msg: "{{ result.openstack_servers }}"
 ... 
-

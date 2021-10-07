@@ -1,9 +1,13 @@
 ---
 - hosts: MyLocalVMs
-  remote_user: gokhale
+  remote_user: cc
   tasks:
-  - name: Install subversion module using apt-get
-    apt: name=subversion state=latest
+  - name: Install pip and openstack modules using apt-get
+    apt:
+      pkg:
+      - python3-pip
+      - python3-openstackclient
+      - subversion
     become: yes
 ...
 

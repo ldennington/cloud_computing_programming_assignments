@@ -8,7 +8,7 @@
 
   - name: Obtain info about our Chameleon cloud identity domain
     openstack.cloud.identity_domain_info:
-        cloud: CH-822922   # this is the nickname from our clouds.yaml file
+        cloud: openstack   # this is the nickname from our clouds.yaml file
     register: result
 
   - name: "Print results"
