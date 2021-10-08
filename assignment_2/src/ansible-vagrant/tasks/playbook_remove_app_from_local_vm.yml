@@ -1,0 +1,10 @@
+---
+- hosts: MyLocalVMs
+  remote_user: gokhale
+
+  tasks:
+  - name: Remove the installed subversion module using apt-get
+    apt: name=subversion state=absent purge=yes
+    become: yes
+...
+
