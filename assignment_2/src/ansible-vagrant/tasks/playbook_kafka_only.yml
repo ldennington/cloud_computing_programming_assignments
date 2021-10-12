@@ -1,0 +1,70 @@
+---
+  - name: Make Kafka Dir
+    ansible.builtin.file:
+      path: ~/kafka
+      state: directory
+      mode: '0755'
+
+  - name: Check for Kafka Dir
+    stat:
+      path: ~/kafka/kafka_2.13-2.6.2
+    register: kafka
+
+  - name: Installing Kafka
+    ansible.builtin.unarchive:
+      src: https://downloads.apache.org/kafka/2.6.2/kafka_2.13-2.6.2.tgz
+      dest: ~/kafka
+      remote_src: yes
+    when: not kafka.stat.exists
+
+  - name: Change Kafka Logs
+    ansible.builtin.lineinfile:
+      path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+      regexp: '^log.dirs=/tmp/kafka-logs'
+      line: log.dirs=/home/cc/logs
+
+
+  # HAS HARDCODED IP.
+  # WE COULD LOOK AT CHANGING
+  - name: Change Zookeeper IP
+    ansible.builtin.lineinfile:
+      path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+      regexp: '^zookeeper.connect=localhost'
+      line: zookeeper.connect=129.114.25.169:2181
+
+  - name: Uncomment Kafka Listener
+    ansible.builtin.lineinfile:
+      path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+      regexp: '^#listeners=PLAINTEXT://:9092'
+      line: listeners=PLAINTEXT://:9092
+
+  # HAS HARDCODED IP.
+  # WE COULD LOOK AT CHANGING
+  - name: Uncomment Kafka Listener
+    ansible.builtin.lineinfile:
+      path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+      regexp: '^#advertised.listeners=PLAINTEXT://your.host.name:9092'
+      line: advertised.listeners=PLAINTEXT://129.114.25.169:9092
+
+  - name: Uncomment Kafka Listener
+    ansible.builtin.lineinfile:
+      path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+      regexp: '^#listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL'
+      line: listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
+
+  - name: Replace Kafka Service File
+    ansible.builtin.copy:
+      src: ~/Documents/school/cs_5287/assignment_two/cloud_computing_programming_assignments/assignment_2/src/ansible-vagrant/kafka_only.service
+      dest: /etc/systemd/system/kafka.service
+      owner: cc
+      group: cc
+      mode: '0755'
+    become: true
+
+  - name: Start Kafka Service
+    ansible.builtin.service:
+      name: kafka
+      enabled: yes
+      state: started
+    become: yes
+...
