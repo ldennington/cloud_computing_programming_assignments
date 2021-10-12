@@ -1,0 +1,11 @@
+---
+- name: "Installing Java JRE"
+  apt:
+    name: default-jre
+    update_cache: yes
+  become: true
+- name: "Installing Java JDK"
+  apt:
+    name: default-jdk
+  become: true
+...
