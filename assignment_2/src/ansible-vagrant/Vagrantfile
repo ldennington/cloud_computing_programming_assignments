@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
    config.vm.provision "file", source: "~/.ssh/team4.pem", destination: "~/.ssh/"
    config.vm.provision "file", source: "./.ansible.cfg", destination: "~/.ansible.cfg"
    config.vm.provision "file", source: "./tasks", destination: "~/ansible-vagrant/tasks"
-   config.vm.provision "file", source: "../kafka", destination: "~/kafka"
+   config.vm.provision "file", source: "../kafka_config", destination: "~/kafka_config"
    config.vm.provision "file", source: "~/.config/openstack/clouds.yaml", destination: "~/.config/openstack/clouds.yaml"
 
    # Enure permissions on the  pem file are not too open

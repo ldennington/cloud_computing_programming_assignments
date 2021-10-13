@@ -11,7 +11,7 @@
 
   - name: Replace Zookeeper Service File
     ansible.builtin.copy:
-      src: ~/Documents/school/cs_5287/assignment_two/cloud_computing_programming_assignments/assignment_2/src/kafka/ms2_consumer.py
+      src: ~/kafka_config/ms2_consumer.py
       dest: ~/consumer/consumer.py
       owner: cc
       group: cc
@@ -19,7 +19,7 @@
 
   - name: Replace Consumer Service File
     ansible.builtin.copy:
-      src: ~/Documents/school/cs_5287/assignment_two/cloud_computing_programming_assignments/assignment_2/src/ansible-vagrant/consumer.service
+      src: ~/kafka_config/consumer.service
       dest: /etc/systemd/system/consumer.service
       owner: cc
       group: cc

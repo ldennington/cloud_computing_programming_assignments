@@ -18,8 +18,6 @@
       proto: tcp
     become: true
 
-  # HAS HARDCODED INSTANCE NAME
-  # WE COULD LOOK AT CHANGING
   - name: Allow Zookeeper
     community.general.ufw:
       rule: limit

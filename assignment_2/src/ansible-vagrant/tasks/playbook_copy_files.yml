@@ -1,7 +1,7 @@
 ---
-  - name: Copy a kafka directory to Chameleon VM
+  - name: Copy kafka_config directory to Chameleon VMs
     copy:
-        src: ../../kafka
+        src: ~/kafka_config
         dest: /home/cc
 ...
 
