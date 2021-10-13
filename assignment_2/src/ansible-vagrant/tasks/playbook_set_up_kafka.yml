@@ -22,8 +22,15 @@
       path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
       regexp: '^log.dirs=/tmp/kafka-logs'
       line: log.dirs=/home/cc/logs
+<<<<<<<< HEAD:assignment_2/src/ansible-vagrant/tasks/playbook_set_up_kafka.yml
   
   - name: Allow deleting of topics
+========
+
+  # HAS HARDCODED IP.
+  # WE COULD LOOK AT CHANGING
+  - name: Change Zookeeper IP
+>>>>>>>> 5033abc (Clean up for Milestone 2 completion):assignment_2/src/ansible-vagrant/tasks/playbook_kafka_only.yml
     ansible.builtin.lineinfile:
       path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
       line: delete.topic.enable = true
