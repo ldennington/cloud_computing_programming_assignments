@@ -1,0 +1,34 @@
+---
+  - name: Install Pip Kafka
+    pip:
+      name: kafka-python
+
+  - name: Make Consumer Dir
+    ansible.builtin.file:
+      path: ~/consumer
+      state: directory
+      mode: '0766'
+
+  - name: Replace Zookeeper Service File
+    ansible.builtin.copy:
+      src: ~/kafka_config/ms2_consumer.py
+      dest: ~/consumer/consumer.py
+      owner: cc
+      group: cc
+      mode: '0766'
+
+  - name: Replace Consumer Service File
+    ansible.builtin.copy:
+      src: ~/kafka_config/consumer.service
+      dest: /etc/systemd/system/consumer.service
+      owner: cc
+      group: cc
+      mode: '0755'
+    become: true
+
+  - name: Start Consumer Service
+    ansible.builtin.service:
+      name: consumer
+      state: started
+    become: yes
+...

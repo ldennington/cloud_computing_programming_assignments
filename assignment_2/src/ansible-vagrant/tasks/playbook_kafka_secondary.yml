@@ -1,0 +1,29 @@
+---
+- name: Change Broker ID to 1
+  ansible.builtin.lineinfile:
+    path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+    regexp: '^broker.id=0'
+    line: broker.id=1
+
+- name: Change Zookeeper IP
+  ansible.builtin.lineinfile:
+    path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+    regexp: '^zookeeper.connect=localhost'
+    line: zookeeper.connect=129.114.25.169:2181
+
+- name: Update advertised listener
+  ansible.builtin.lineinfile:
+    path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+    regexp: '^#advertised.listeners=PLAINTEXT://your.host.name:9092'
+    line: advertised.listeners=PLAINTEXT://129.114.27.100:9092
+
+- name: Start Kafka Service
+  ansible.builtin.service:
+    name: kafka
+    enabled: yes
+    state: started
+  become: yes
+
+- name: Create Meetup Seattle Topic
+  ansible.builtin.command: "~/kafka/kafka_2.13-2.6.2/bin/kafka-topics.sh --create --zookeeper 129.114.25.169:2181 --replication-factor 1 --partitions 1 --topic MeetUpSeattle"
+...
