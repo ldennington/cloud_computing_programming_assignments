@@ -16,28 +16,30 @@
     name: team4-ldennington-ansible
     availability_zone: nova
     image: CC-Ubuntu20.04-20210223
-    key_name: ldennington_chameleoncloud
+    key_name: team4
     timeout: 200
     flavor: m1.small
-    security_groups: 
+    network: CH-822922-net
+    security_groups:
       - SHARED-CLOUDCOMPUTING
       - default
     floating_ips:
       - 129.114.27.100
 
-# - name: Launch Quinn's instance
-#   openstack.cloud.server:
-#     state: present
-#     cloud: openstack
-#     name: team4-qpomm-ansible
-#     availability_zone: nova
-#     image: CC-Ubuntu20.04-20210223
-#     key_name: ldennington_chameleoncloud
-#     timeout: 200
-#     flavor: m1.small
-#     security_groups: 
-#       - SHARED-CLOUDCOMPUTING
-#       - default
-#     floating_ips:
-#       - 129.114.25.169
+- name: Launch Quinn's instance
+  openstack.cloud.server:
+    state: present
+    cloud: openstack
+    name: team4-qpomm-ansible
+    availability_zone: nova
+    image: CC-Ubuntu20.04-20210223
+    key_name: team4
+    timeout: 200
+    flavor: m1.small
+    network: CH-822922-net
+    security_groups:
+      - SHARED-CLOUDCOMPUTING
+      - default
+    floating_ips:
+      - 129.114.25.169
 ...

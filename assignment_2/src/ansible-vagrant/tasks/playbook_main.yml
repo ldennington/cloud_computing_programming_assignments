@@ -6,4 +6,15 @@
   
   tasks:
   - include_tasks: ./playbook_create_chameleon_instances.yml
+
+- name: "Play 2: Install packages and copy files"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  collections:
+    - openstack.cloud
+  gather_facts: yes
+  
+  tasks:
+  - include_tasks: ./playbook_install_packages.yml
+  - include_tasks: ./playbook_copy_files.yml
 ...

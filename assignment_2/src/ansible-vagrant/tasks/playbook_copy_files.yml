@@ -1,0 +1,7 @@
+---
+  - name: Copy a kafka directory to Chameleon VM
+    copy:
+        src: ../../kafka
+        dest: /home/cc
+...
+

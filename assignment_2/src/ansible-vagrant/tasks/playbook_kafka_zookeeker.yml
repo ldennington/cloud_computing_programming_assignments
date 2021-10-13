@@ -105,5 +105,4 @@
 # WE COULD LOOK AT CHANGING
 - name: Create Meetup Seattle Topic
   ansible.builtin.command: ~/kafka/kafka_2.13-2.6.2/bin/kafka-topics.sh --create --zookeeper 129.114.25.169:2181 --replication-factor 1 --partitions 1 --topic MeetUpSeattle
-
 ...
