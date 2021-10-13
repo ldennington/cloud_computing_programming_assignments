@@ -18,15 +18,12 @@
       proto: tcp
     become: true
 
-  # HAS HARDCODED INSTANCE NAME
-  # WE COULD LOOK AT CHANGING
   - name: Allow Zookeeper
     community.general.ufw:
       rule: limit
       port: 2181
       proto: tcp
     become: true
-    when: ansible_facts.facter_ec2_metadata.hostname == "team4-qpomm-ansible.novalocal"
 
   - name: Allow Kafka
     community.general.ufw:
