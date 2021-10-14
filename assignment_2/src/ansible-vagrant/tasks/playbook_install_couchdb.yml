@@ -30,4 +30,14 @@
       pkg:
       - couchdb
     become: yes
+  
+  - name: Configure couchdb
+    blockinfile:
+      path: /etc/local.ini
+      block: |
+        [couchdb]
+         single_node=true
+        [admins]
+         admin = password
+    become: yes
 ...
