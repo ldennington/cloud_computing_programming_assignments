@@ -2,8 +2,12 @@
 - name: "Play 1: Provision Chameleon VMs"
   hosts: MyLocalVMs
   remote_user: cc
+<<<<<<< HEAD
   gather_facts: no
   
+=======
+
+>>>>>>> 5ab8f8d (feat: add ability for couchdb to be connected to, and create meetup database)
   tasks:
   - include_tasks: ./playbook_create_chameleon_instances.yml
 
@@ -12,8 +16,12 @@
   remote_user: cc
   collections:
     - openstack.cloud
+<<<<<<< HEAD
   gather_facts: no
   
+=======
+
+>>>>>>> 5ab8f8d (feat: add ability for couchdb to be connected to, and create meetup database)
   tasks:
   - include_tasks: ./playbook_install_packages.yml
   - include_tasks: ./playbook_copy_files.yml

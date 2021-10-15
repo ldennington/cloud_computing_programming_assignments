@@ -1,7 +1,8 @@
 ---
 - name: Install couchdb
-  hosts: MyPrimaryVM
-  remote_user:  cc
+  # Changed because the secondary VM needs to have couchdb.
+  hosts: MySecondaryVM
+  remote_user: cc
 
   tasks:
   - name: "Install couchdb dependencies"
@@ -11,14 +12,14 @@
       - apt-transport-https
       - gnupg
     become: yes
-  
+
   - name: Add couchdb signing key
     ansible.builtin.apt_key:
       id: 390EF70BB1EA12B2773962950EE62FB37A00258D
       url: https://couchdb.apache.org/repo/keys.asc
       keyring: /usr/share/keyrings/couchdb-archive-keyring.gpg
     become: yes
-  
+
   - name: Add repository to sources list
     ansible.builtin.apt_repository:
       repo: deb [signed-by=/usr/share/keyrings/couchdb-archive-keyring.gpg] https://apache.jfrog.io/artifactory/couchdb-deb/ focal main
@@ -30,14 +31,27 @@
       pkg:
       - couchdb
     become: yes
-  
+
   - name: Configure couchdb
     blockinfile:
-      path: /etc/local.ini
+      path: /opt/couchdb/etc/local.ini
       block: |
         [couchdb]
          single_node=true
         [admins]
-         admin = password
+         admin = LazyPassword
+        [chttpd]
+         port = 5984
+         bind_address = 0.0.0.0
     become: yes
+
+  - name: Start CouchDB Service
+    ansible.builtin.service:
+      name: couchdb
+      state: restarted
+      daemon_reload: true
+    become: yes
+
+  - name: Create Meetup New York Topic
+    ansible.builtin.command: "curl -X PUT http://admin:LazyPassword@54.164.41.139:5984/meetups"
 ...
