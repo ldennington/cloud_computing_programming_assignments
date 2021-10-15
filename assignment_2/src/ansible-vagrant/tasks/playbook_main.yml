@@ -2,7 +2,7 @@
 - name: "Play 1: Provision Chameleon VMs"
   hosts: MyLocalVMs
   remote_user: cc
-  
+
   tasks:
   - include_tasks: ./playbook_create_chameleon_instances.yml
 
@@ -11,7 +11,7 @@
   remote_user: cc
   collections:
     - openstack.cloud
-  
+
   tasks:
   - include_tasks: ./playbook_install_packages.yml
   - include_tasks: ./playbook_copy_files.yml
@@ -21,21 +21,21 @@
   remote_user: cc
   collections:
     - community.general
-  
+
   tasks:
   - include_tasks: ./playbook_set_ufw.yml
 
 - name: "Play 4: Set up kafka"
   hosts: MyChameleonVMs
   remote_user: cc
-  
+
   tasks:
   - include_tasks: ./playbook_set_up_kafka.yml
 
 - name: "Play 5: Set up primary VM"
   hosts: MyPrimaryVM
   remote_user: cc
-  
+
   tasks:
   - include_tasks: ./playbook_kafka_zookeeper_primary.yml
   - include_tasks: ./playbook_run_consumer.yml
@@ -43,7 +43,7 @@
 - name: "Play 5: Set up secondary VM"
   hosts: MySecondaryVM
   remote_user: cc
-  
+
   tasks:
   - include_tasks: ./playbook_kafka_secondary.yml
 ...

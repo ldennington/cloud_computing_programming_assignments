@@ -32,14 +32,15 @@
       port: 9092
       proto: tcp
     become: true
-  
+
+  # Added this because technically the DB needs to be on the instance without the zookeeper.
   - name: Allow couchdb
     community.general.ufw:
       rule: limit
       port: 5984
       proto: tcp
     become: true
-    when: ansible_facts.facter_ec2_metadata.hostname == "team4-qpomm-ansible.novalocal"
+    when: ansible_facts.facter_ec2_metadata.hostname == "team4-ldennington-ansible.novalocal"
 
   - name: Enable State
     community.general.ufw:
