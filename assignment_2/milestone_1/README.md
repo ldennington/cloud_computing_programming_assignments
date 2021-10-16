@@ -27,6 +27,10 @@ In order to complete this milestone, we did the following:
 
 ### Reviewing applicable materials
 
+Quinn's time: N/A
+Lessley's time: 60 minutes
+Total time: 60 minutes
+
 Watched videos of in-class lectures on ansible/vagrant to ensure basic understanding of these tools before attempting to use them. Also pulled/reviewed the following directories from the Scaffolding Code:
 
 - `AnsibleOnly_Local_and_Cloud`
@@ -35,11 +39,19 @@ Watched videos of in-class lectures on ansible/vagrant to ensure basic understan
 
 ### Setup
 
+Quinn's time: N/A
+Lessley's time: 15 minutes
+Total time: 15 minutes
+
 1. [Downloaded and installed](https://www.vagrantup.com/downloads) vagrant on host machine.
 2. Copied tasks and configuration files from Scaffolding Code into team repo.
 3. Generated and downloaded `clouds.yaml` from Chameleon.
 
 ### Configuration
+
+Quinn's time: N/A
+Lessley's time: 60 minutes
+Total time: 60 minutes
 
 1. `MyInventory` File
 
@@ -65,11 +77,19 @@ Watched videos of in-class lectures on ansible/vagrant to ensure basic understan
 
 3. `bootstrap.sh`
 
+   Quinn's time: N/A
+   Lessley's time: 1 minute
+   Total time: 1 minute
+
    Added needed directories according to `Vagrantfile` config:
    * `~/kafka`
    * `~/ansible-vagrant/tasks`
 
 4. `.ansible.cfg`
+
+   Quinn's time: N/A
+   Lessley's time: 30 minutes
+   Total time: 30 minutes
 
    Created `.ansible.cfg` file that specified:
    * Path to `MyInventory` file
@@ -78,6 +98,10 @@ Watched videos of in-class lectures on ansible/vagrant to ensure basic understan
    * No host key checking
 
 5. Tasks
+
+   Quinn's time: N/A
+   Lessley's time: 60 minutes
+   Total time: 60 minutes
 
    Removed unnecessary comments and:
    * `playbook_get_facts_cloud_vm.yml` and `playbook_get_facts_cloud_vm_newway.yml`:
@@ -88,8 +112,39 @@ Watched videos of in-class lectures on ansible/vagrant to ensure basic understan
    * `playbook_main.yml`:
       * Added pre-task to install `python3-pip` and `python3-openstackclient` (required for `playbook_get_facts_cloud_vm.yml` to execute)
 
+### Total time expended
+
+The total time expended for this milestone for Quinn and Lessley was
+226 minutes, or 3.8 hours.
+
 ## Part 3: Video demo
 
 The following is a demonstration of the work completed for this milestone:
 
 https://vanderbilt365-my.sharepoint.com/:v:/g/personal/lessley_c_dennington_vanderbilt_edu/EeD2yhutc4BMuzq-Z3eH15EBE-DCxFe3smuCKGKPhTVxlw?e=5FpmaE
+
+## Part 4: Running the code
+
+__Pre-Requisites__
+
+Use any macOS or Linux machine with `vagrant` and `VirtualBox`
+installed.
+
+Check out commit `24ba23f ` to access the correct `src` for this
+Milestone.
+
+__Steps to run__
+
+From the `assignment_2/src/ansible-vagrant` directory:
+
+`vagrant up`
+
+If you would like to run playbooks:
+
+`vagrant ssh`
+
+`cd ansible-vagrant/tasks`
+
+`ansible-playbook <playbook-name>`
+
+
