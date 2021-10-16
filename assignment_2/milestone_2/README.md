@@ -29,10 +29,18 @@ In order to complete this milestone, we did the following:
 
 1. Added `requirements.yml`
 
+   Quinn's time: N/A
+   Lessley's time: 10 minutes
+   Total time: 10 minutes
+
    We added a new `requirements.yml` file to specify the Ansible
    collections required for our solution.
 
 2. Updated `Vagrantfile`
+
+   Quinn's time: N/A
+   Lessley's time: 30 minutes
+   Total time: 30 minutes
 
    Building off the work from Milestone 1, we:
       1. Specified an `ansible.galaxy_role_file` (`requirements.yml`)
@@ -41,10 +49,18 @@ In order to complete this milestone, we did the following:
 
 3. Updated `MyInventory`
 
+   Quinn's time: N/A
+   Lessley's time: 2 minutes
+   Total time: 2 minutes
+
    Added new `MyPrimaryVM` and `MySecondaryVM` groups to execute
    certain tasks on one Chameleon instance but not the other.
 
 5. Updated `tasks`
+
+   Quinn's time: 360 minutes
+   Lessley's time: 180 minutes
+   Total time: 540 minutes
 
    Modified `main.yml` to run the tasks detailed below as plays.
 
@@ -73,6 +89,10 @@ In order to complete this milestone, we did the following:
 
 6. Added configuration files for kafka
 
+   Quinn's time: 60 minutes
+   Lessley's time: N/A
+   Total time: 60 minutes
+
    Added the following kafka configuration files for easy copying to
    Chameleon VMs:
 
@@ -84,8 +104,40 @@ In order to complete this milestone, we did the following:
    Also added the simplified `ms2_consumer.py` with `couchdb` related
    code removed for the purposes of this milestone only.
 
+### Total time expended
+
+The total time expended for this milestone for Quinn and Lessley was
+642 minutes, or 10.7 hours.
+
 ## Part 3: Video demo
 
 The following is a demonstration of the work completed for this milestone:
 
 https://vanderbilt365-my.sharepoint.com/:v:/g/personal/lessley_c_dennington_vanderbilt_edu/EWV4oxY1wWNIvynwliQMV6kB-BdxHLBJQk4xL4ySqor91A?e=8vHXPr
+
+## Part 4: Running the code
+
+__Pre-Requisites__
+
+Use any macOS or Linux machine with `vagrant` and `VirtualBox`
+installed.
+
+Check out commit `5033abc` to access the correct `src` for this
+Milestone.
+
+__Steps to run__
+
+From the `assignment_2/src/ansible-vagrant` directory:
+
+`vagrant up`
+
+`vagrant ssh`
+
+From `~/kafka_config`:
+
+`python3 seattle_producer.py`
+
+`python3 new_york_producer.py`
+
+
+
