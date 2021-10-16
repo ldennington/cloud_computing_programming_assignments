@@ -64,7 +64,7 @@ Windows, so we did not need to install/configure PuTTY)
 2. Set up an Instance in Chameleon Cloud, including selecting source, flavor,
 network, security group(s), and associating our key pairs and floating IPs,
 among other steps
-3. Discovered Instancce name and confirmed it is accessible via `ssh` on local
+3. Discovered Instance name and confirmed it is accessible via `ssh` on local
 VM
 4. Ran `python3 --version` to confirm it was installed with Ubuntu 20.04
 
