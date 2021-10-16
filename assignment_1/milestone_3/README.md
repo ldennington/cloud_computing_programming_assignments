@@ -26,6 +26,12 @@ In order to complete this milestone, we did the following:
 
 ### Installing/configuring `couchdb`
 
+Quinn's time: 0.15 hours
+
+Lessley's time: 1 hour
+
+Total time: 1.15 hours
+
 We used the following commands to install `couchdb` on one Chameleon and one AWS
 instance:
 
@@ -43,12 +49,24 @@ address and created an admin user/password.
 
 ### Creating `assignment_one` database
 
+Quinn's time: 0.25 hours
+
+Lessley's time: 0.10 hours
+
+Total time: 0.35 hours
+
 We executed the following command to create the `assignment_one` `couchdb`
 database on one Chameleon and one AWS instance:
 
 `curl -X PUT http://admin:<password>@0.0.0.0:5984/assignment_one`
 
 ### Opening port 
+
+Quinn's time: 0.25 hours
+
+Lessley's time: 0.10 hours
+
+Total time: 0.35 hours
 
 We opened port 5984 on one Chameleon and one AWS Instance:
 #### Chameleon
@@ -59,7 +77,24 @@ Added custom firewall rule for inbound traffic on port 5984
 
 `sudo ufw allow 5984/tcp`
 
+### Modifying consumer code
+
+Quinn's time: 1.5 hours
+
+Lessley's time: N/A
+
+Total time: 1.5 hours
+
+Added ability to write to `assignment_1` database via `env.yml` config
+in `consumer.py`.
+
 ### Mango queries
+
+Quinn's time: N/A
+
+Lessley's time: 0.30 hours
+
+Total time: 0.30 hours
 
 1. In the `couchdb` UI, created a custom index to filter on `group_city`:
 
@@ -89,8 +124,62 @@ Added custom firewall rule for inbound traffic on port 5984
 }
 ```
 
+### Total time expended
+
+The total time expended for this milestone for Quinn and Lessley was
+about 3.65 hours.
+
 ## Part 3: Video demo
 
 The following is a demonstration of the work completed for this milestone:
 
 https://vanderbilt365-my.sharepoint.com/:v:/g/personal/lessley_c_dennington_vanderbilt_edu/ETP3QSUP42lCgxB4-_j5lQYBhOiX5RgQ8NpzucuZZKHOKA?e=cDWcpU
+
+## Part 4: Running the code
+
+__Pre-Requisites__
+
+Use the same machine you configured for running the Milestone 1 and
+Milestone 2 code. See the
+[Milestone 1 README](../milestone_1/README.md) for additional
+details.
+
+Additionally, use the same producer/consumer setup you created locally
+as described in the [Milestone 2 README](../milestone_2/README.md).
+Don't forget to modify the `bootstrap_servers` array!
+
+Finally, ensure you have installed `couchdb`, created your database,
+and opened port 5984 using the commands detailed above.
+
+__Steps to run__
+
+Update the contents of `env.yml` to the following:
+
+```
+couchdb:
+    database_host:     localhost
+    database_port:     5984
+    database_name:     assignment_one
+    database_user:     admin
+    database_password: password
+```
+
+From the `assignment_1/milestone_3/src` directory, run your configured
+producer using the appropriate command:
+
+`python3 seattle_producer.py`
+
+`python3 new_york_producer.py`
+
+From a separate terminal, run your modified consumer:
+
+`python3 consumer.py`
+
+Once you register a "hit" in the producer/consumer, in a browser,
+navigate to:
+
+localhost:5984/_utils/#database/assignment_one_all_docs
+
+Log in with the credentials specified in `env.yml` and run the
+appropriate Mango query specified above to view hits for the producer
+you configured.
