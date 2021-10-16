@@ -52,6 +52,6 @@
       daemon_reload: true
     become: yes
 
-  - name: Create Meetup New York Topic
+  - name: Create Meetup Database
     ansible.builtin.command: "curl -X PUT http://admin:LazyPassword@54.164.41.139:5984/meetups"
 ...
