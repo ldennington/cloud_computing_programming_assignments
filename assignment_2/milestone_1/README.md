@@ -28,8 +28,10 @@ In order to complete this milestone, we did the following:
 ### Reviewing applicable materials
 
 Quinn's time: N/A
-Lessley's time: 60 minutes
-Total time: 60 minutes
+
+Lessley's time: 1 hour
+
+Total time: 1 hour
 
 Watched videos of in-class lectures on ansible/vagrant to ensure basic understanding of these tools before attempting to use them. Also pulled/reviewed the following directories from the Scaffolding Code:
 
@@ -40,8 +42,10 @@ Watched videos of in-class lectures on ansible/vagrant to ensure basic understan
 ### Setup
 
 Quinn's time: N/A
-Lessley's time: 15 minutes
-Total time: 15 minutes
+
+Lessley's time: 0.25 hours
+
+Total time: 0.25 hours
 
 1. [Downloaded and installed](https://www.vagrantup.com/downloads) vagrant on host machine.
 2. Copied tasks and configuration files from Scaffolding Code into team repo.
@@ -50,8 +54,10 @@ Total time: 15 minutes
 ### Configuration
 
 Quinn's time: N/A
-Lessley's time: 60 minutes
-Total time: 60 minutes
+
+Lessley's time: 1 hour
+
+Total time: 1 hour
 
 1. `MyInventory` File
 
@@ -78,8 +84,10 @@ Total time: 60 minutes
 3. `bootstrap.sh`
 
    Quinn's time: N/A
-   Lessley's time: 1 minute
-   Total time: 1 minute
+
+   Lessley's time: 0.05 hours
+
+   Total time: 0.05 hours
 
    Added needed directories according to `Vagrantfile` config:
    * `~/kafka`
@@ -88,8 +96,10 @@ Total time: 60 minutes
 4. `.ansible.cfg`
 
    Quinn's time: N/A
-   Lessley's time: 30 minutes
-   Total time: 30 minutes
+
+   Lessley's time: 0.50 hours
+
+   Total time: 0.50 hours
 
    Created `.ansible.cfg` file that specified:
    * Path to `MyInventory` file
@@ -100,8 +110,10 @@ Total time: 60 minutes
 5. Tasks
 
    Quinn's time: N/A
-   Lessley's time: 60 minutes
-   Total time: 60 minutes
+
+   Lessley's time: 1 hour
+   
+   Total time: 1 hour
 
    Removed unnecessary comments and:
    * `playbook_get_facts_cloud_vm.yml` and `playbook_get_facts_cloud_vm_newway.yml`:
@@ -115,7 +127,7 @@ Total time: 60 minutes
 ### Total time expended
 
 The total time expended for this milestone for Quinn and Lessley was
-226 minutes, or 3.8 hours.
+about 4.25 hours.
 
 ## Part 3: Video demo
 
@@ -146,5 +158,3 @@ If you would like to run playbooks:
 `cd ansible-vagrant/tasks`
 
 `ansible-playbook <playbook-name>`
-
-
