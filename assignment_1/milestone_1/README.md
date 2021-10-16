@@ -33,9 +33,11 @@ In order to complete this milestone, we completed the following steps:
 
 ### Set up local VM using VirtualBox
 
-Quinn's time: 30 minutes
-Lessley's time: 30 minutes
-Total time: 60 minutes
+Quinn's time: 0.50 hours
+
+Lessley's time: 0.50 hours
+
+Total time: 1.00 hour
 
 1. Set up shared folder on local machine
 2. Downloaded/installed VirtualBox
@@ -51,9 +53,11 @@ Total time: 60 minutes
 
 ### Set up Instance in Chameleon Cloud
 
-Quinn's time: 45 minutes
-Lessley's time: 20 minutes
-Total time: 65 minutes
+Quinn's time: 0.75 hours
+
+Lessley's time: 0.30 hours
+
+Total time: 1.05 hours
 
 1. Generated key pair and saved private key locally (we were not using
 Windows, so we did not need to install/configure PuTTY)
@@ -66,9 +70,11 @@ VM
 
 ### Clone scaffolding code and install packages on local VM
 
-Quinn's time: 10 minutes
-Lessley's time: 15 minutes
-Total time: 25 minutes
+Quinn's time: 0.15 hours
+
+Lessley's time: 0.25 hours
+
+Total time: 0.40 hours
 
 1. Cloned
 [Programming Assignment Scaffolding Code](https://github.com/asgokhale/CloudComputingCourse)
@@ -78,8 +84,7 @@ installed with `pip3` (which was installed in the final step of
 
 ### Total time expended
 
-The total time expended for this milestone for Quinn and Lessley was
-150 minutes, or 2.5 hours.
+The total time expended for this milestone for Quinn and Lessley was about 2.45 hours.
 
 ## Part 3: Video demo
 
@@ -128,7 +133,7 @@ NOTE: These steps must be done while on Kafka user from Installation Guide
 
 ## Part 5: Running the code
 
-__Pre-Requisites__
+__Pre-Requisites:__
 
 Use a Linux machine.
 
