@@ -24,7 +24,7 @@
   collections:
     - community.general
   gather_facts: no
-  
+
   tasks:
   - include_tasks: ./playbook_set_ufw.yml
 
@@ -32,24 +32,33 @@
   hosts: MyChameleonVMs
   remote_user: cc
   gather_facts: no
-  
+
   tasks:
   - include_tasks: ./playbook_set_up_kafka.yml
 
-- name: "Play 5: Set up primary VM"
+- name: "Play 5: Install couchdb"
+  hosts: MySecondaryVM
+  tags: "milestone3"
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_set_up_couchdb.yml
+
+- name: "Play 6: Set up primary VM"
   hosts: MyPrimaryVM
   remote_user: cc
   gather_facts: no
-  
+
   tasks:
   - include_tasks: ./playbook_kafka_zookeeper_primary.yml
   - include_tasks: ./playbook_run_consumer.yml
 
-- name: "Play 5: Set up secondary VM"
+- name: "Play 7: Set up secondary VM"
   hosts: MySecondaryVM
   remote_user: cc
   gather_facts: no
-  
+
   tasks:
   - include_tasks: ./playbook_kafka_secondary.yml
 ...

@@ -9,7 +9,7 @@ consumer = KafkaConsumer (bootstrap_servers="129.114.25.169:9092")
 consumer.subscribe (topics=["MeetUpSeattle", "MeetUpNewYork"])
 
 def read_db():
-    with open("~/kafka_config/env.yml", "r") as stream:
+    with open("/home/cc/kafka_config/env.yml", "r") as stream:
         try:
             return (yaml.safe_load(stream))
         except yaml.YAMLError as exc:
