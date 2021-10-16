@@ -33,6 +33,10 @@ In order to complete this milestone, we completed the following steps:
 
 ### Set up local VM using VirtualBox
 
+Quinn's time: 30 minutes
+Lessley's time: 30 minutes
+Total time: 60 minutes
+
 1. Set up shared folder on local machine
 2. Downloaded/installed VirtualBox
 2. Downloaded Ubuntu 20.04 LTS
@@ -47,22 +51,35 @@ In order to complete this milestone, we completed the following steps:
 
 ### Set up Instance in Chameleon Cloud
 
+Quinn's time: 45 minutes
+Lessley's time: 20 minutes
+Total time: 65 minutes
+
 1. Generated key pair and saved private key locally (we were not using
 Windows, so we did not need to install/configure PuTTY)
 2. Set up an Instance in Chameleon Cloud, including selecting source, flavor,
 network, security group(s), and associating our key pairs and floating IPs,
 among other steps
-3. Discovered Instancce name and confirmed it is accessible via `ssh` on local
+3. Discovered Instance name and confirmed it is accessible via `ssh` on local
 VM
 4. Ran `python3 --version` to confirm it was installed with Ubuntu 20.04
 
 ### Clone scaffolding code and install packages on local VM
+
+Quinn's time: 10 minutes
+Lessley's time: 15 minutes
+Total time: 25 minutes
 
 1. Cloned
 [Programming Assignment Scaffolding Code](https://github.com/asgokhale/CloudComputingCourse)
 2. Discovered additional packages needed to run producer code (`kafka`) and
 installed with `pip3` (which was installed in the final step of
 [section 1 above](#local-vm-setup-using-virtualbox))
+
+### Total time expended
+
+The total time expended for this milestone for Quinn and Lessley was
+150 minutes, or 2.5 hours.
 
 ## Part 3: Video demo
 
@@ -108,3 +125,34 @@ NOTE: These steps must be done while on Kafka user from Installation Guide
 ```
 ~/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic name> --from-beginning
 ```
+
+## Part 5: Running the code
+
+__Pre-Requisites__
+
+Use a Linux machine.
+
+Ensure your machine has the following installed:
+
+1. `kafka`/`zookeeper`
+2. `python3`
+2. `pip`
+3. `kafka-python`
+4. `default-jre`
+5. `default-jdk`
+
+Ensure your `zookeeper.service` and `kafka.service` files are
+configured as detailed in
+[the guide to install kafka and zookeeper](https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-ubuntu-20-04).
+
+__Steps to run__
+
+From any directory:
+
+`sudo systemctl start kafka`
+
+`sudo systemctl start zookeeper`
+
+From the `assignment_1/milestone_1/src` directory:
+
+`python3 producer.py`
