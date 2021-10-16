@@ -46,15 +46,23 @@ In order to complete this milestone, we did the following:
 
 ### Local Ubuntu VMs
 
+Quinn's time: 0.25 hours
+
+Lessley's time: 0.25 hours
+
+Total time: 0.50 hours
+
 We set up separate producer code to publish to topics on our
 Chameleon/AWS VMs. See [`seattle_producer`](src/seattle_producer.py) and
 [`new_york_producer`](src/new_york_producer.py) for details.
 
 ### Chameleon Instances
 
-Quinn's time: 120 minutes
-Lessley's time: 60 minutes
-Total time: 180 minutes
+Quinn's time: 2.00 hours
+
+Lessley's time: 1.00 hour
+
+Total time: 3.00 hours
 
 We installed necessary packages and Apache Kafka on both our Chameleon VM instances.
 We each updated our instance's `server.properties` file to enable streaming from
@@ -70,9 +78,11 @@ Zookeeper.
 
 ### AWS Instances
 
-Quinn's time: 90 minutes
-Lessley's time: 20 minutes
-Total time: 110 minutes
+Quinn's time: 1.50 hours
+
+Lessley's time: 0.30 hours
+
+Total time: 1.80 hours
 
 We installed necessary packages and Apache Kafka on both our AWS VM instances.
 We each updated our instance's `server.properties` file to enable streaming from
@@ -88,8 +98,7 @@ Zookeeper.
 
 ### Total time expended
 
-The total time expended for this milestone for Quinn and Lessley was
-290 minutes, or 4.8 hours.
+The total time expended for this milestone for Quinn and Lessley was about 5.30 hours.
 
 ## Part 3: Video demo
 
