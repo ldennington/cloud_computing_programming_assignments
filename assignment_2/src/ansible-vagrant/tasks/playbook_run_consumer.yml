@@ -3,6 +3,10 @@
     pip:
       name: kafka-python
 
+  - name: Install Pip Couchdb
+    pip:
+      name: couchdb
+
   - name: Make Consumer Dir
     ansible.builtin.file:
       path: ~/consumer
@@ -11,7 +15,7 @@
 
   - name: Replace Zookeeper Service File
     ansible.builtin.copy:
-      src: ~/kafka_config/ms2_consumer.py
+      src: ~/kafka_config/consumer.py
       dest: ~/consumer/consumer.py
       owner: cc
       group: cc
