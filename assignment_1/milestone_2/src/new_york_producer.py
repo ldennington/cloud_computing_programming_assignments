@@ -22,7 +22,7 @@ from kafka import KafkaProducer
 
 # Chameleon IP: 129.114.25.169
 # AWS IP: 54.196.220.28
-producer = KafkaProducer (bootstrap_servers=[' 54.196.220.28:9092'],
+producer = KafkaProducer (bootstrap_servers=['129.114.25.169:9092'],
                          value_serializer=lambda x:
                          json.dumps(x).encode('utf-8'))
 

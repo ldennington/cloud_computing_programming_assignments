@@ -18,9 +18,4 @@
     enabled: yes
     state: started
   become: yes
-
-- name: Sleep for 10 seconds to ensure full startup
-  wait_for:
-    timeout: 10
-  delegate_to: localhost
 ...

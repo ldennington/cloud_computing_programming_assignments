@@ -98,7 +98,9 @@ In order to complete this milestone, we did the following:
 6. Added configuration files for kafka
 
    Quinn's time: 1 hour
+
    Lessley's time: N/A
+
    Total time: 1 hour
 
    Added the following kafka configuration files for easy copying to

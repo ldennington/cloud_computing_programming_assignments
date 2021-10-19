@@ -44,8 +44,11 @@ echo "deb [signed-by=/usr/share/keyrings/couchdb-archive-keyring.gpg] https://ap
 sudo apt update
 sudo apt install -y couchdb
 ```
-We then set up `couchdb` in single-node configuration with the `0.0.0.0` bind
-address and created an admin user/password.
+We then set up `couchdb` in single-node configuration with the `0.0.0.0`
+bind address and created an admin user/password. Additionally, we
+installed the `couchdb` Python package:
+
+`pip install couchdb`
 
 ### Creating `assignment_one` database
 
@@ -58,7 +61,7 @@ Total time: 0.35 hours
 We executed the following command to create the `assignment_one` `couchdb`
 database on one Chameleon and one AWS instance:
 
-`curl -X PUT http://admin:<password>@0.0.0.0:5984/assignment_one`
+`curl -X PUT http://admin:password@0.0.0.0:5984/assignment_one`
 
 ### Opening port 
 

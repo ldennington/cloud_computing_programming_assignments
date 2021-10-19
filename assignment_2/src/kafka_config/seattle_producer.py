@@ -1,27 +1,9 @@
-#
-#
-# Author: Aniruddha Gokhale
-# CS4287-5287: Principles of Cloud Computing, Vanderbilt University
-#
-# Created: Sept 6, 2020
-#
-# Purpose:
-#
-#    Demonstrate the use of Kafka Python streaming APIs.
-#    In this example, we use the "top" command and use it as producer of events for
-#    Kafka. The consumer can be another Python program that reads and dumps the
-#    information into a database OR just keeps displaying the incoming events on the
-#    command line consumer (or consumers)
-#
-
 import os
 import time
 import requests
 import json
 from kafka import KafkaProducer
 
-# AWS instance public IP: 54.227.61.11
-# Chameleon instance public IP: 129.114.27.100
 producer = KafkaProducer (bootstrap_servers=['129.114.27.100:9092'],
                          value_serializer=lambda x:
                          json.dumps(x).encode('utf-8'))
