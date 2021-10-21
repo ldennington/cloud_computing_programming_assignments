@@ -1,0 +1,61 @@
+# Need to install docker first before running this book.
+---
+- name: Start Docker Service
+  ansible.builtin.service:
+    name: docker
+    enabled: yes
+    state: started
+  become: yes
+
+- name: "Apt Update"
+  apt:
+    name: aptitude
+    state: latest
+    update_cache: yes
+    force_apt_get: yes
+
+- name: "Installing Apt Packages"
+  apt:
+    name: "{{ item }}"
+    state: latest
+  loop: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools', gnupg-agent]
+
+- name: "Add Key"
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: "Add Repo"
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    filename: kubernetes.list
+
+- name: "Install Packages"
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  loop: ['kubeadm', 'kubelet', 'kubectl', 'kubernetes-cni']
+
+- name: Disable Swap
+  command: swapoff -a
+
+- name: Disable Permanently
+  replace:
+    path: /etc/fstab
+    regexp: '^(\s)([^#\n]+\s+)(\w+\s+)swap(\s+.)$'
+    replace: '#\1\2\3swap\4'
+    backup: yes
+
+- name: Load Docker Daemon
+  ansible.builtin.copy:
+    dest: /etc/docker/daemon.json
+    content: "{{ dockerDaemon | to_json }}"
+
+- name: Restart Docker
+  ansible.builtin.service:
+    name: docker
+    state: restarted
+    daemon_reload: true
+...
