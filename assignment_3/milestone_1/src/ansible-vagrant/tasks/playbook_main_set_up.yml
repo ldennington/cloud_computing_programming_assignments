@@ -1,0 +1,64 @@
+---
+- name: "Play 1: Provision Chameleon VMs"
+  hosts: MyLocalVMs
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_create_chameleon_instances.yml
+
+- name: "Play 2: Install packages and copy files"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  collections:
+    - openstack.cloud
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_install_packages.yml
+  - include_tasks: ./playbook_copy_files.yml
+
+- name: "Play 3: Set ufw"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  collections:
+    - community.general
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_set_ufw.yml
+
+- name: "Play 4: Set up kafka"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_set_up_kafka.yml
+
+- name: "Play 5: Install couchdb"
+  hosts: MySecondaryVM
+  tags: "milestone3"
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_set_up_couchdb.yml
+
+- name: "Play 6: Set up primary VM"
+  hosts: MyPrimaryVM
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_kafka_zookeeper_primary.yml
+  - include_tasks: ./playbook_run_consumer.yml
+
+- name: "Play 7: Set up secondary VM"
+  hosts: MySecondaryVM
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_kafka_secondary.yml
+...

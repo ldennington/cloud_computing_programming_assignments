@@ -1,0 +1,11 @@
+---
+- name: Remove Primary VM
+  openstack.cloud.server:
+    name: team4-qpomm-ansible
+    state: absent
+
+- name: Remove Secondary VM
+  openstack.cloud.server:
+    name: team4-ldennington-ansible
+    state: absent
+...
