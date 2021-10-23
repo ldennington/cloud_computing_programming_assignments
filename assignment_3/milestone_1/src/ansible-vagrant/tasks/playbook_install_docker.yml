@@ -1,6 +1,6 @@
 ---
 - name: "Install Le Docker"
-  hosts: #Need Host
+  hosts: # Need Host
   remote_user: cc
   gather_facts: no
   become: yes
@@ -35,19 +35,12 @@
       name: docker-ce
       state: latest
 
+  - name: Add Vagrant User to docker group
+    user:
+      name: ubuntu
+      group: docker
+
   - name: "Install Docker Pip"
     pip:
       name: docker
-
-  # This will probably need to change to something else in the future.
-  - name: "Pull Docker Img"
-    docker_image:
-      name: nginx
-      source: pull
-
-  - name: "Start Docker"
-    docker_container:
-      name: Quibb_Docker
-      image: nginx
-      state: started
 ...

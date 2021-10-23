@@ -55,4 +55,11 @@
 
 - name: Create Assignment 2 Database
   ansible.builtin.command: "curl -X PUT http://*USER*:*PASSWORD*@129.114.27.100:5984/assignment_two"
+
+- name: Start Consumer Service
+  ansible.builtin.service:
+    name: consumer
+    state: restarted
+  become: yes
+  delegate_to: MyPrimaryVM
 ...

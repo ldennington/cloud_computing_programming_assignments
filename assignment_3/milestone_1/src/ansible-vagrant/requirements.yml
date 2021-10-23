@@ -2,3 +2,4 @@ collections:
 - name: openstack.cloud
 - name: community.general
 - name: community.docker
+- name: community.kubernetes
