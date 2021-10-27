@@ -1,0 +1,12 @@
+---
+- name: Copy kafka_config directory to Chameleon VMs
+  copy:
+      src: ~/kafka_config
+      dest: /home/cc
+
+- name: Copy docker_kubernetes directory to Chameleon VMs
+  copy:
+      src: ~/docker_kubernetes
+      dest: /home/cc
+...
+

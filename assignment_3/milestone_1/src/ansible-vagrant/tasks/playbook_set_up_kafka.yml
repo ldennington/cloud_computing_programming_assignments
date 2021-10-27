@@ -1,0 +1,62 @@
+---
+  - name: Make Kafka Dir
+    ansible.builtin.file:
+      path: ~/kafka
+      state: directory
+      mode: '0755'
+
+  - name: Check for Kafka Dir
+    stat:
+      path: ~/kafka/kafka_2.13-2.6.2
+    register: kafka
+
+  - name: Install Kafka
+    ansible.builtin.unarchive:
+      src: https://downloads.apache.org/kafka/2.6.2/kafka_2.13-2.6.2.tgz
+      dest: ~/kafka
+      remote_src: yes
+    when: not kafka.stat.exists
+
+  - name: Change Kafka Logs
+    ansible.builtin.lineinfile:
+      path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+      regexp: '^log.dirs=/tmp/kafka-logs'
+      line: log.dirs=/home/cc/logs
+  
+  - name: Allow deleting of topics
+    ansible.builtin.lineinfile:
+      path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+      line: delete.topic.enable = true
+      insertafter: EOF
+      state: present
+  
+  - name: Uncomment Kafka listeners
+    ansible.builtin.lineinfile:
+      path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+      regexp: '^#listeners=PLAINTEXT://:9092'
+      line: listeners=PLAINTEXT://:9092
+
+  - name: Uncomment listener security protocol map
+    ansible.builtin.lineinfile:
+      path: ~/kafka/kafka_2.13-2.6.2/config/server.properties
+      regexp: '^#listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL'
+      line: listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
+
+  - name: Replace Kafka Service File
+    ansible.builtin.copy:
+      src: ~/kafka_config/kafka.service
+      dest: /etc/systemd/system/kafka.service
+      owner: cc
+      group: cc
+      mode: '0755'
+    become: true
+  
+  - name: Replace Zookeeper Service File
+    ansible.builtin.copy:
+      src: ~/kafka_config/zookeeper.service
+      dest: /etc/systemd/system/zookeeper.service
+      owner: cc
+      group: cc
+      mode: '0755'
+    become: true
+...

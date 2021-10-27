@@ -1,0 +1,14 @@
+---
+- name: "Install Java JRE"
+  apt:
+    pkg:
+    - default-jre
+    update_cache: yes
+  become: yes
+
+- name: "Install Java JDK"
+  apt:
+    pkg:
+    - default-jdk
+  become: yes
+...

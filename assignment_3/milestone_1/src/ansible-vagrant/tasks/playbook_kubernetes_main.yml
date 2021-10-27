@@ -1,0 +1,11 @@
+---
+- name: Create Hostname for Main
+  ansible.builtin.hostname:
+    name: kubernetes-main
+
+- name: Restart Kublet
+  ansible.builtin.service:
+    name: kubelet
+    state: restarted
+    daemon_reload: true
+...
