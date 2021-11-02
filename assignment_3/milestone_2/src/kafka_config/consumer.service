@@ -1,0 +1,12 @@
+[Unit]
+Requires=kafka.service zookeeper.service
+After=kafka.service zookeeper.service
+
+[Service]
+Type=simple
+User=cc
+ExecStart=/usr/bin/python3 /home/cc/consumer/consumer.py
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
