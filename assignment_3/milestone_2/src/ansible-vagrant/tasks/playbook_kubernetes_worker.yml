@@ -1,0 +1,5 @@
+---
+- name: Create Hostname for Worker
+  ansible.builtin.hostname:
+    name: kubernetes-worker
+...

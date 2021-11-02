@@ -1,0 +1,10 @@
+kafka:
+    image: confluentinc/cp-kafka
+    container_name: kafka
+    environment:
+        - KAFKA_ZOOKEEPER_CONNECT=3.80.96.186:2181
+        - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://3.80.96.186:9092
+        - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+    ports:
+        - 9092:9092
+
