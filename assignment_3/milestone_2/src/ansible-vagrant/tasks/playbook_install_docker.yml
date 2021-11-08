@@ -1,0 +1,39 @@
+---
+- name: "Apt Update"
+  apt:
+    name: aptitude
+    state: latest
+    update_cache: yes
+    force_apt_get: yes
+
+- name: "Installing Apt Packages"
+  apt:
+    name: "{{ item }}"
+    state: latest
+  loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+
+- name: "Add Docker key"
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: "Add Docker Repo"
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: "Install Docker"
+  apt:
+    update_cache: yes
+    name: docker-ce
+    state: latest
+
+- name: Add Vagrant User to docker group
+  user:
+    name: ubuntu
+    group: docker
+
+- name: "Install Docker Pip"
+  pip:
+    name: docker
+...
