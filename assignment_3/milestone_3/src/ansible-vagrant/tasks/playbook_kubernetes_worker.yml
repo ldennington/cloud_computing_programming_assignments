@@ -1,0 +1,8 @@
+---
+- name: Create Hostname for Worker
+  ansible.builtin.hostname:
+    name: kubernetes-worker
+
+- name: Join the node to cluster
+  shell: sh /home/cc/join-command
+...

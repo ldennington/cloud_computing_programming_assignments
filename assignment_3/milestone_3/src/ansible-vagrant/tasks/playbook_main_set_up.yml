@@ -1,0 +1,139 @@
+---
+- name: "Play 1: Provision Chameleon VMs"
+  hosts: MyLocalVMs
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_create_chameleon_instances.yml
+
+- name: "Play 2: Install packages"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  collections:
+    - openstack.cloud
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_install_packages.yml
+
+- name: "Play 3: Copy files"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  tags: "assignment3_milestone3"
+  collections:
+    - openstack.cloud
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_copy_files.yml
+
+- name: "Play 3: Set ufw"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  collections:
+    - community.general
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_set_ufw.yml
+
+- name: "Play 4: Set up kafka"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_set_up_kafka.yml
+
+- name: "Play 5: Install couchdb"
+  hosts: MySecondaryVM
+  tags: "assignment1_milestone3"
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_set_up_couchdb.yml
+
+- name: "Play 6: Set up primary VM"
+  hosts: MyPrimaryVM
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_kafka_zookeeper_primary.yml
+  - include_tasks: ./playbook_run_consumer.yml
+
+- name: "Play 7: Set up secondary VM"
+  hosts: MySecondaryVM
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_kafka_secondary.yml
+
+- name: "Play 8: Install docker and kubernetes"
+  hosts: MyChameleonVMs
+  remote_user: cc
+  gather_facts: no
+  become: yes
+  vars:
+    dockerDaemon: {
+      "exec-opts" : [
+        "native.cgroupdriver=systemd"
+      ]
+    }
+
+  tasks:
+  - include_tasks: ./playbook_install_docker.yml
+  - include_tasks: ./playbook_install_kubernetes.yml
+
+- name: "Play 9: Set up main"
+  hosts: MySecondaryVM
+  tags: "assignment3_milestone3"
+  remote_user: cc
+  gather_facts: no
+  become: yes
+  vars:
+    dockerDaemon: {
+      "exec-opts" : [
+        "native.cgroupdriver=systemd"
+      ]
+    }
+
+  tasks:
+  - include_tasks: ./playbook_kubernetes_main.yml
+
+- name: "Play 10: Set up worker"
+  hosts: MyPrimaryVM
+  tags: "assignment3_milestone3"
+  remote_user: cc
+  gather_facts: no
+  become: yes
+  vars:
+    dockerDaemon: {
+      "exec-opts" : [
+        "native.cgroupdriver=systemd"
+      ]
+    }
+
+  tasks:
+  - include_tasks: ./playbook_kubernetes_worker.yml
+
+- name: "Play 11: Set up kafka pipeline with docker + kubernetes"
+  hosts: MySecondaryVM
+  tags: "assignment3_milestone3"
+  remote_user: cc
+  gather_facts: no
+  collections:
+    - community.docker
+  vars:
+    dockerDaemon: {
+      "exec-opts" : [
+        "native.cgroupdriver=systemd"
+      ]
+    }
+
+  tasks:
+  - include_tasks: ./playbook_kubernetes_kafka.yml
+...
