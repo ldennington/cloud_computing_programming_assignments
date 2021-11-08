@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-worker
+spec:
+  selector:
+    matchLabels:
+      app: kafka-worker
+  minReadySeconds: 5
+
+  template:
+    metadata:
+      labels:
+        app: kafka-worker
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: kubernetes-worker
+      containers:
+      - name: kafka-worker
+        image: wurstmeister/kafka
+        ports:
+        - containerPort: 9092
+        env:
+        - name: KAFKA_BROKER_ID
+          value: "1"
+        - name: KAFKA_ADVERTISED_PORT
+          value: "30001"
+        - name: KAFKA_ADVERTISED_HOST_NAME
+          value: 129.114.27.100
+        - name: KAFKA_ZOOKEEPER_CONNECT
+          value: zookeeper-svc:2181

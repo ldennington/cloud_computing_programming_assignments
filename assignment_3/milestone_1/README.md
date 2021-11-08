@@ -223,6 +223,12 @@ On `kubernetes-main`:
 
     `kubectl taint nodes kubernetes-main node-role.kubernetes.io/master:NoSchedule-`
 
+0. Configure insecure registry
+
+    Add this line in `/etc/docker/daemon.json`:
+
+    `"insecure-registries": ["<IP Address>:5000"]`
+
 On `kubernetes-worker`:
 
 __Note:__ The full command is in the output of the `kubeadm init` command run above.

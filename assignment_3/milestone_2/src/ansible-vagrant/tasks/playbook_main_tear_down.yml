@@ -1,0 +1,9 @@
+---
+- name: "Play 1: Tear down Chameleon VMs"
+  hosts: MyLocalVMs
+  remote_user: cc
+  gather_facts: no
+
+  tasks:
+  - include_tasks: ./playbook_tear_down_chameleon_instances.yml
+...
