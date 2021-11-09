@@ -1,0 +1,9 @@
+[Service]
+Type=simple
+User=cc
+ExecStart=/bin/sh -c '/home/cc/kafka/kafka_2.13-2.6.2/bin/kafka-server-start.sh /home/cc/kafka/kafka_2.13-2.6.2/config/server.properties > /home/cc/kafka/kafka_2.13-2.6.2/kafka.log 2>&1'
+ExecStop=/home/cc/kafka/kafka_2.13-2.6.2/bin/kafka-server-stop.sh
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target

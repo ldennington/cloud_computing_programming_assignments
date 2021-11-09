@@ -1,0 +1,50 @@
+---
+- name: Install pip
+  apt:
+    pkg:
+    - python3-pip
+  become: yes
+
+- name: Install openstack sdk
+  pip:
+    name: python-openstackclient
+
+- name: Launch primary instance
+  openstack.cloud.server:
+    state: present
+    cloud: openstack
+    name: team4-qpomm-ansible
+    availability_zone: nova
+    image: CC-Ubuntu20.04-20210223
+    key_name: team4
+    timeout: 200
+    flavor: m1.small
+    network: CH-822922-net
+    security_groups:
+      - SHARED-CLOUDCOMPUTING
+      - default
+    floating_ips:
+      - 129.114.25.169
+
+- name: Launch secondary instance
+  openstack.cloud.server:
+    state: present
+    cloud: openstack
+    name: team4-ldennington-ansible
+    availability_zone: nova
+    image: CC-Ubuntu20.04-20210223
+    key_name: team4
+    timeout: 200
+    flavor: m1.small
+    network: CH-822922-net
+    security_groups:
+      - SHARED-CLOUDCOMPUTING
+      - default
+    floating_ips:
+      - 129.114.27.100
+
+- name: Sleep for 1 minute to ensure full provisioning
+  wait_for:
+    timeout: 60
+  delegate_to: localhost
+...
