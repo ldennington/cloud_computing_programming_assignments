@@ -83,7 +83,7 @@ following commands from the manual steps outlined in the
 0. Sleeping for 1 minute to ensure pods are created/running - this was
 not necessary when running commands manually in Milestone 2
 
-0. Creates the `assignment_3` couchdb database - this replaces the
+0. Creating the `assignment_3` couchdb database - this replaces the
 following commands from the manual steps outlined in the
 [Milestone 2 `README`](../milestone_2/README.md):
 
