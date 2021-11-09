@@ -1,0 +1,53 @@
+---
+- name: Set up private registry
+  shell: docker run -d -p 5000:5000 --restart=always --name registry registry:2
+  become: yes
+
+- name: Set registry as insecure
+  lineinfile:
+    path: /etc/docker/daemon.json
+    search_string: '{"exec-opts": ["native.cgroupdriver=systemd"]}'
+    line: '{"exec-opts": ["native.cgroupdriver=systemd"],"insecure-registries": ["129.114.27.100:5000"]}'
+  become: yes
+
+- name: Restart docker
+  service:
+    name: docker
+    state: restarted
+    daemon_reload: true
+  become: yes
+
+- name: Build consumer image
+  docker_image:
+    name: 129.114.27.100:5000/consumer
+    push: yes
+    tag: latest
+    source: build
+    build:
+      path: /home/cc/docker_kubernetes/kafka-pipeline
+      dockerfile: dockerfile-consumer
+  become: yes
+
+- name: Create services and deployment pods
+  shell: kubectl apply -f {{ item }}
+  with_items:
+  - /home/cc/docker_kubernetes/kafka-pipeline/zookeeper-svc.yml
+  - /home/cc/docker_kubernetes/kafka-pipeline/zookeeper-deployment.yml
+  - /home/cc/docker_kubernetes/kafka-pipeline/kafka-svc-main.yml
+  - /home/cc/docker_kubernetes/kafka-pipeline/kafka-deployment-main.yml
+  - /home/cc/docker_kubernetes/kafka-pipeline/kafka-svc-worker.yml
+  - /home/cc/docker_kubernetes/kafka-pipeline/kafka-deployment-worker.yml
+  - /home/cc/docker_kubernetes/kafka-pipeline/couchdb-svc.yml
+  - /home/cc/docker_kubernetes/kafka-pipeline/couchdb-deployment.yml
+
+- name: Sleep for 1 minute to ensure pods are running
+  wait_for:
+    timeout: 60
+  delegate_to: localhost
+
+- name: Create assignment 3 database
+  command: "curl -X PUT http://admin:password@129.114.27.100:30002/assignment_three"
+
+- name: Create consumer job pod
+  shell: kubectl apply -f /home/cc/docker_kubernetes/kafka-pipeline/consumer-job.yml
+...

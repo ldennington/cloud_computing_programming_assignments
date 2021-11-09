@@ -83,7 +83,7 @@ following commands from the manual steps outlined in the
 0. Sleeping for 1 minute to ensure pods are created/running - this was
 not necessary when running commands manually in Milestone 2
 
-0. Creates the `assignment_3` couchdb database - this replaces the
+0. Creating the `assignment_3` couchdb database - this replaces the
 following commands from the manual steps outlined in the
 [Milestone 2 `README`](../milestone_2/README.md):
 
@@ -119,6 +119,12 @@ The following is a video demonstration of the work completed for this
 milestone:
 
 https://vanderbilt365-my.sharepoint.com/:v:/g/personal/lessley_c_dennington_vanderbilt_edu/EW_WYx0NBgVNvNGrEB6si40BHinq5NfO235bT8JpCmj4MA?e=52Fw7B
+
+### Bonus video!
+
+The following is a video demonstration of tearing down our k8s cluster:
+
+https://vanderbilt365-my.sharepoint.com/:v:/g/personal/lessley_c_dennington_vanderbilt_edu/EamSRTBOpUtGg9tz0U09BHEBi62RBL22wVehSOOHTqwL6g?e=H6f3al
 
 ## Part 4: Running the code
 
