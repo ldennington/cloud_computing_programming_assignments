@@ -1,0 +1,13 @@
+---
+- name: Copy docker_kubernetes directory to Chameleon VMs
+  copy:
+      src: ~/docker_kubernetes
+      dest: /home/cc
+      mode: '0644'
+
+- name: Copy private key to Chameleon VMs
+  copy:
+      src: ~/.ssh/team4.pem
+      dest: /home/cc/.ssh
+...
+
