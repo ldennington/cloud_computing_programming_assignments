@@ -1,0 +1,60 @@
+---
+- name: Create Hostname for Main
+  ansible.builtin.hostname:
+    name: kubernetes-main
+
+- name: Make kubelet file
+  ansible.builtin.file:
+    path: /etc/default/kubelet
+    state: touch
+    mode: '0755'
+
+- name: Restart kubelet
+  ansible.builtin.service:
+    name: kubelet
+    state: restarted
+    daemon_reload: true
+
+- name: Init Cluster
+  shell: kubeadm init --node-name kubernetes-main --pod-network-cidr=10.244.0.0/16
+
+- name: Create .kube directory
+  ansible.builtin.file:
+    path: /home/cc/.kube
+    state: directory
+    mode: '0755'
+
+- name: Copy Admin.Conf
+  ansible.builtin.copy:
+    src: /etc/kubernetes/admin.conf
+    dest: /home/cc/.kube/config
+    remote_src: yes
+    owner: cc
+
+- name: Chmod Admin.Conf
+  file:
+    path: /home/cc/.kube/config
+    owner: cc
+    group: cc
+    mode: 0644
+
+- name: Install Flannel
+  shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+  become: no
+
+- name: Generate join command
+  command: kubeadm token create --print-join-command
+  register: join_command
+
+- name: Make join-command file
+  copy:
+    dest: "/home/cc/join-command"
+    content: "{{ join_command.stdout_lines[0] }}"
+
+- name: Copy join-command file to worker
+  shell: rsync -avz -e "ssh -o StrictHostKeyChecking=no -i  /home/cc/.ssh/team4.pem" --progress join-command cc@129.114.25.169:/home/cc/join-command
+
+- name: Taint main
+  shell: kubectl taint nodes kubernetes-main node-role.kubernetes.io/master:NoSchedule-
+  become: no
+...

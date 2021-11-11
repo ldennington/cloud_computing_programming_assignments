@@ -1,0 +1,10 @@
+{"0": {"id": 500006, "timestamp": 1377986701, "value": 11.72, "property":
+0, "plug_id": 4, "household_id": 2, "house_id": 1}, "1": {"id": 500007,
+"timestamp": 1377986701, "value": 257.88, "property": 1, "plug_id": 5,
+"household_id": 2, "house_id": 1}, "2": {"id": 500008, "timestamp":
+1377986701, "value": 173.88, "property": 0, "plug_id": 5, "household_id":
+2, "house_id": 1}, "3": {"id": 500009, "timestamp": 1377986701, "value":
+0.0, "property": 1, "plug_id": 0, "household_id": 0, "house_id": 10}, "4":
+{"id": 500010, "timestamp": 1377986701, "value": 0.16, "property": 0,
+"plug_id": 0, "household_id": 0, "house_id": 10}},
+{"0": {"id": 500006, "timestamp": 1377986701, "value": 11.72, "property": 0, "plug_id": 4, "household_id": 2, "house_id": 1}, "1": {"id": 500007, "timestamp": 1377986701, "value": 257.88, "property": 1, "plug_id": 5, "household_id": 2, "house_id": 1}, "2": {"id": 500008, "timestamp": 1377986701, "value": 173.88, "property": 0, "plug_id": 5, "household_id": 2, "house_id": 1}, "3": {"id": 500009, "timestamp": 1377986701, "value": 0.0, "property": 1, "plug_id": 0, "household_id": 0, "house_id": 10}, "4": {"id": 500010, "timestamp": 1377986701, "value": 0.16, "property": 0, "plug_id": 0, "household_id": 0, "house_id": 10}}
