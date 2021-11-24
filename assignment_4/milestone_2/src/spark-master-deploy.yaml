@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-master-deploy
+spec:
+  replicas: 1             # only 1 replica of master
+  selector:
+    matchLabels:
+      app: sparkMasterApp
+  minReadySeconds: 5
+
+  template:
+    metadata:
+      labels:
+        app: sparkMasterApp
+    spec:
+      hostname: spark-master-host
+      nodeSelector:
+        kubernetes.io/hostname: kubernetes-main
+      containers:
+        - name: spark-master
+          image: 129.114.27.100:5000/my-spark:latest
+          imagePullPolicy: Always
+          ports:            # Spark master port
+            - containerPort: 7077  # inside it listens on this port
+            - containerPort: 8080  # the dashboard
+          env:
+            - name: SPARK_LOCAL_IP
+              value: "spark-master-host"
+            - name: SPARK_NO_DAEMONIZE # so that the master runs in foreground
+              value: "1"
+            - name: SPARK_HOME
+              value: "/spark-3.2.0-bin-hadoop3.2-scala2.13"
+
+          command: ["$(SPARK_HOME)/sbin/start-master.sh"]
+          args: ["--host", "spark-master-host"]
+...
