@@ -5,6 +5,7 @@ __Team 4: Quinn Pommerening and Lessley Dennington__
 ## Part 1: Teamwork
 
 __Quinn Pommerening__
+* Attempted creation of Spark pipeline using Apache Beam
 * Wrote code to read from `assignment_four` database and write to
 `assignment_four_averages` database in `mapreduce.py`
 * Wrote `plot.py` code to graph execution times for different numbers
@@ -33,15 +34,15 @@ In order to complete this milestone, we did the following:
 
 ### Created Spark config files and pods and deployed to K8s
 
-Quinn's time: N/A
+Quinn's time: 1.5 hours
 
 Lessley's time: 1.5 hours
 
-Total time: 1.5 hours
+Total time: 3 hours
 
 Created the following dockerfile to build Spark driver image:
 
-`spark_dockerfile`
+* `spark_dockerfile`
 
 Created the following config files for Spark:
 
@@ -56,9 +57,17 @@ cluster:
 * `spark-master-deploy.yaml`
 * `spark-worker-deploy.yaml`
 
-The majority of time spent on this piece of the assignment was
-reviewing slides/scaffolding code to understand the correct pod
+The majority of Lessley's time spent on this piece of the assignment
+was reviewing slides/scaffolding code to understand the correct pod
 structure and appropriate configs for Spark running in K8s.
+
+There were some challenges with this step, including:
+
+1. Quinn initially attempted to set this pipeline up with Beam (since
+we're using it for our final project), but we decided to switch to a
+standard Spark pipeline using the instructions from the DIY_SelfStudy
+slides (which Lessley was able to set up successfully) after
+encountering some issues with Beam and K8s.
 
 ### Read 1,000,000 records from `assignment_four` couchdb database
 
@@ -172,7 +181,7 @@ and 99th percentiles)
 ### Total time expended
 
 The total time expended for this milestone for Quinn and Lessley was
-18.25 hours.
+19.75 hours.
 
 ## Part 3: Video demo
 
